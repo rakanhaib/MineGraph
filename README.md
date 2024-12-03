@@ -51,10 +51,9 @@ MineGraph is a user-friendly bioinformatics tool designed to automate the workfl
 
 ### Getting Started
 
-To start using MineGraph, create a CSV or XLSX file listing the names of your FASTA files with a column named `fasta_files`. Example:
+To start using MineGraph, create a CSV or XLSX file listing the names of your FASTA files with a one column. Example:
 
 ```plaintext
-fasta_files
 Avena_sativa.fasta
 Triticum.fasta
 Zea_Mays.fasta
@@ -66,21 +65,26 @@ Place the FASTA files in a folder (e.g., `./my_data/`) in the current directory,
 ### Usage
 
 ```bash
-python MineGraph.py <data_dir> [input_file] [threads]
+python MineGraph.py --data_dir <fasta_files_dir> --output_dir <out/dir>--metadata <csv_file>
 ```
 
 - **Arguments:**
-  - `<data_dir>`: Directory containing the raw FASTA files. The results will be saved here.
-  - `[input_file]`: (Optional) CSV or XLSX file listing the FASTA files to process. If omitted, all FASTA files in `<data_dir>` will be used.
-  - `[threads]`: (Optional) Number of threads for PGGB and other parallel tasks. Default is 16.
+  | Argument       | Required | Default   | Description                                                                                          |
+|----------------|----------|-----------|------------------------------------------------------------------------------------------------------|
+| `--data_dir`   | Yes      |           | Directory containing the input FASTA files to be processed.                                          |
+| `--output_dir` | Yes      |           | Directory where the output files (e.g., MSA, trees, visualizations) will be saved.                   |
+| `--metadata`   | Yes      |           | Metadata file (in CSV or XLSX format) listing the FASTA files to be processed.                      |
+| `--threads`    | No       | 16        | Number of threads to use for parallel processing.                                                   |
+| `--tree_pars`  | No       | 10        | Number of parsimonious trees to generate.                                                           |
+| `--tree_bs`    | No       | 10        | Number of bootstrap trees to generate for assessing phylogenetic tree confidence.                   |
+| `--quantile`   | No       | 50        | Consensus nodes percentage of presence. For example, `100` means nodes must appear in all paths.    |
+| `--top_n`      | No       | 1000      | The top `N` node sizes to visualize in the output, sorted by size.                                  |
+
 
 - **Examples:**
   ```bash
-  # Run MineGraph with a list of selected FASTA files
-  python MineGraph.py /path/to/your/data selected_files.csv 
-
-  # Run MineGraph with 64 threads
-  python MineGraph.py /path/to/your/data selected_files.csv 64   
+  python MineGraph.py --data_dir ./input_fasta/ --output_dir ./results/ --metadata metadata.csv --threads 32 --tree_pars 20 --tree_bs 50 --quantile 75 --top_n 500
+   
   ```
 
 The final output will be organized in the following folders:
