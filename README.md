@@ -68,8 +68,9 @@ Place the FASTA files in a folder (e.g., `./my_data/`) in the current directory,
 python MineGraph.py --data_dir <fasta_files_dir> --output_dir <out/dir>--metadata <csv_file>
 ```
 
-- **Arguments:**
-  | Argument       | Required | Default   | Description                                                                                          |
+## Arguments
+
+| Argument       | Required | Default   | Description                                                                                          |
 |----------------|----------|-----------|------------------------------------------------------------------------------------------------------|
 | `--data_dir`   | Yes      |           | Directory containing the input FASTA files to be processed.                                          |
 | `--output_dir` | Yes      |           | Directory where the output files (e.g., MSA, trees, visualizations) will be saved.                   |
