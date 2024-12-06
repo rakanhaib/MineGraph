@@ -155,9 +155,9 @@ if __name__ == "__main__":
     parser.add_argument("--threads", type=int, default=16, help="Number of threads (default: 16)")
     parser.add_argument("--tree_pars", type=int, default=10, help="Number of parsimonious trees (default: 10)")
     parser.add_argument("--tree_bs", type=int, default=10, help="Number of bootstrap trees (default: 10)")
-    parser.add_argument("--quantile", type=int, default=25, help="Consensus nodes taken from the top percentage (quantile) "
-                                                                   ", e.g 0.25 means the nodes in the con. present in top 25% nodes count (default 25%)")
-    parser.add_argument("--top_n", type=int, default="50", help="top N nodes sizes to be visualized")
+    parser.add_argument("--quantile", type=int, default=50, help="Consensus nodes percentage of presence,"
+                                                                 " 100 means the nodes appeared in 100% of the paths, default is 50")
+    parser.add_argument("--top_n", type=int, default="1000", help="top N nodes sizes to be visualized, default is 1000")
 
     args = parser.parse_args()
 
